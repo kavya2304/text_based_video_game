@@ -9,7 +9,7 @@ Kavyasri Thalluri (kthallur@stevens.edu)
 15-25 hours
 
 >>A description of how you tested your code: 
-I have manually checked , covering all the cases that I wrote meaning all verbs and extensions , writing unit tests for the same and with the gradescope too.
+I have manually checked , covering all the cases that I wrote meaning all verbs and extensions using my map and the professor test map, writing unit tests for the same and with the gradescope too.
 
 >>Any bugs or issues you could not resolve:
 There are no bugs that I could not resolve in the code.
