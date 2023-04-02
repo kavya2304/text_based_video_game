@@ -14,17 +14,18 @@ def parse_command(input_string):
         return Command(verb, args)
     
 def main():
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("loop_map", help="JSON file containing the game map")
-    # args = parser.parse_args()
-    # with open(args.loop_map, "r") as f:
-    #     map_data = json.load(f)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("loop_map", help="JSON file containing the game map")
+    args = parser.parse_args()
+    with open(args.loop_map, "r") as f:
+        map_data = json.load(f)
     # # print(map_data)   
-    f=open('loop_map.json')
-    map_data = json.load(f)
+    # f=open('loop_map.json')
+    # map_data = json.load(f)
      
     game_state = GameState(map_data)
     room = game_state.get_current_room()
+    print()
     print('>',room.name,'\n')
     print(room.desc,'\n')
     if room.items:
