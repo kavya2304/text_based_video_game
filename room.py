@@ -1,10 +1,10 @@
 import random
 
 class Room:
-    def __init__(self, name, desc, exits,items=[],items_player_should_have=None,old_lady=None):
+    def __init__(self, name, desc, exits,items=[] ,items_player_should_have=None,old_lady=None):
         self.name = name
         self.desc = desc
-        self.items = items
+        self.items = items 
         self.exits = exits
         self.items_player_should_have=items_player_should_have
         self.old_lady=old_lady

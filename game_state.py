@@ -13,18 +13,16 @@ class GameState:
 
     def get_room(self, room_idx):
         room_data = self.map_data[room_idx]
-        #print(room_data)
-        if "items_player_should_have" or "old_lady" or "items" in room_data:
-            if "items" and "items_player_should_have" in room_data :
-                return Room(room_data["name"],room_data["desc"],room_data["exits"],room_data["items"],room_data["items_player_should_have"],None)
-    
-            elif "items" in room_data:
-                if "old_lady" in room_data:
-                    return Room(room_data["name"],room_data["desc"],room_data["exits"],room_data["items"],None,room_data["old_lady"])
-                else:
-                    return Room(room_data["name"],room_data["desc"],room_data["exits"],room_data["items"])
-
-        return Room(room_data["name"],room_data["desc"],room_data["exits"])
+        if "items_player_should_have" in room_data and "old_lady" in room_data and "items" in room_data:
+            return Room(room_data["name"], room_data["desc"], room_data["exits"], room_data["items"], room_data["items_player_should_have"], room_data["old_lady"])
+        elif "items_player_should_have" in room_data and "items" in room_data:
+            return Room(room_data["name"], room_data["desc"], room_data["exits"], room_data["items"], room_data["items_player_should_have"], None)
+        elif "old_lady" in room_data and "items" in room_data:
+            return Room(room_data["name"], room_data["desc"], room_data["exits"], room_data["items"], None, room_data["old_lady"])
+        elif "items" in room_data:
+            return Room(room_data["name"], room_data["desc"], room_data["exits"], room_data["items"])
+        else:
+            return Room(room_data["name"], room_data["desc"], room_data["exits"])
 
     def get_exit(self, room_idx, direction):
         room_data = self.map_data[room_idx]
@@ -50,11 +48,12 @@ class GameState:
                 exit_idx = self.get_exit(self.player_location, direction)
             
                 if exit_idx is None:
-                    print('There\'s no way to go',direction,'\n')
+                    print('There\'s no way to go',direction,end='.\n')
                 else:
                     self.player_location = exit_idx
                     roomg = self.get_current_room()
-                    print('You go',direction,end='.\n')
+                    print(f'You go {direction}.',end='\n')
+                    print()
                     # print('----------->>',roomg.items_player_should_have)
                     #for winning and loosing conditions
                     if  roomg.items_player_should_have is not None:
@@ -75,7 +74,7 @@ class GameState:
                     if roomg.old_lady is not None:
                         print('Hey, there is a old-lady in this room who can grant you an item that helps you win the game,to get that say "ABRACADABRA"!!!!!!')
             else:
-                print('Sorry, you need to \'go\' somewhere.','\n')
+                print('Sorry, you need to \'go\' somewhere.',end='\n')
                 
         elif verb == 'look':
             rm=self.get_current_room()
@@ -87,24 +86,27 @@ class GameState:
             print('Exits:', ' '.join(rm.exits.keys()),'\n')
             
         elif verb == 'get':
-            item_name = ' '.join(args)
-            room = self.get_current_room()
-            item = room.get_item(item_name)
-            if item:
-                room.remove_item(item)
-                self.add_item(item)
-                print('You pick up the',item,end='.\n')
+            if len(args)>0:
+                item_name = ' '.join(args)
+                room = self.get_current_room()
+                item = room.get_item(item_name)
+                if item:
+                    room.remove_item(item)
+                    self.add_item(item)
+                    print('You pick up the',item,end='.\n')
+                else:
+                    print('There\'s no',item_name,'anywhere.')
             else:
-                print('There\'s no',item_name,'anywhere.')
+                print('Sorry, you need to \'get\' something.',end='\n')
 
         elif verb == 'quit':
                 print('Goodbye!')
                 self.is_game_over=True
 
         elif verb == 'inventory':
-            print('Inventory:')
             inv=self.get_inventory()
             if inv:
+                print('Inventory:')
                 print(' ','\n  '.join(inv),'\n')
             else:
                 print('You\'re not carrying anything.')
@@ -122,8 +124,8 @@ class GameState:
             item_name = ' '.join(args)
             if item_name in self.inventory:
                 self.remove_item(item_name)
-                room = self.get_current_room()
-                room.add_item(item_name)
+                room123 = self.get_current_room()
+                room123.add_item(item_name)
                 print('You drop the',item_name,end='.\n')
             else:
                 print("You're not carrying that.")
