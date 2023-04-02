@@ -65,11 +65,11 @@ class GameState:
                             print('You entered wrong room without needed items and the Witch killed you.You lost the game!!!')
                             sys.exit()
                     #Room details
-                    print('>',roomg.name,'\n')
-                    print(roomg.desc,'\n')
+                    print('>',roomg.name+'\n')
+                    print(roomg.desc+'\n')
                     if roomg.items:
-                        print('Items:',', '.join(roomg.items),'\n')
-                    print('Exits:', ' '.join(roomg.exits.keys()),'\n')
+                        print('Items:',', '.join(roomg.items)+'\n')
+                    print('Exits:', ' '.join(roomg.exits.keys())+'\n')
                     # This is for abracadabra verb
                     if roomg.old_lady is not None:
                         print('Hey, there is a old-lady in this room who can grant you an item that helps you win the game,to get that say "ABRACADABRA"!!!!!!')
@@ -78,12 +78,12 @@ class GameState:
                 
         elif verb == 'look':
             rm=self.get_current_room()
-            print('>',rm.name,'\n')
-            print(rm.desc,'\n')
+            print('>',rm.name+'\n')
+            print(rm.desc+'\n')
             # print(rm.items)
             if rm.items:
-                print('Items:',' '.join(rm.items),'\n')
-            print('Exits:', ' '.join(rm.exits.keys()),'\n')
+                print('Items:',' '.join(rm.items)+'\n')
+            print('Exits:', ' '.join(rm.exits.keys())+'\n')
             
         elif verb == 'get':
             if len(args)>0:
@@ -107,7 +107,7 @@ class GameState:
             inv=self.get_inventory()
             if inv:
                 print('Inventory:')
-                print(' ','\n  '.join(inv),'\n')
+                print(' ','\n  '.join(inv))
             else:
                 print('You\'re not carrying anything.')
         

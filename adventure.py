@@ -25,12 +25,13 @@ def main():
      
     game_state = GameState(map_data)
     room = game_state.get_current_room()
-    print()
-    print('>',room.name,'\n')
-    print(room.desc,'\n')
+    # print()
+    print('>',room.name+'\n')
+    print(room.desc+'\n')
     if room.items:
-        print('Items:',' '.join(room.items),'\n')
-    print('Exits:', ' '.join(room.exits.keys()),'\n')
+        print('Items:',' '.join(room.items)+'\n')
+    print('Exits:', ' '.join(room.exits.keys())+'\n')
+    # print(f"Exits: {' '.join(list(room['exits']))}")
 
     while not game_state.is_game_over:
         
