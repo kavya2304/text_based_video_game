@@ -1,23 +1,40 @@
 [
-    {"name": "A white room", 
-     "desc": "You are in a simple room with white walls.",
-     "exits": { "north": 1, "east": 3 }
-    }
-   ,
     {"name": "A blue room", 
-     "desc": "This room is simple, too, but with blue walls.",
-     "exits": { "east": 2, "south": 0 }
+     "desc": "You are in a simple room with blue walls.",
+     "exits": { "east": 1 },
+     "items": ["apple"]
     }
    ,
-    {"name": "A green room", 
-     "desc": "You are in a simple room, with bright green walls.",
-     "exits": { "west": 1, "south": 3 },
-     "items": []
+    {"name": "A white room", 
+     "desc": "This room is simple, too, but with white walls.",
+     "exits": { "west": 0, "south": 4 },
+     "items": ["bat"],
+     "old_lady":["wand","potion","invisible_cloak"]
     }
    ,
-    {"name": "A red room",
+    {"name": "A red room", 
      "desc": "This room is fancy. It's red!",
-     "exits": { "north": 2, "west": 0 },
-     "items": ["rose"]
+     "exits": { "east": 3, "south": 5 }
+    
     }
-   ]
+   ,
+    {"name": "A black room",
+     "desc": "You are in shady room with bright black walls.",
+     "exits": { "south": 5, "west": 2 },
+     "items": ["magicbook"],
+     "items_player_should_have":["wand","potion"]
+    }
+    ,
+    {"name": "A yellow room", 
+     "desc": "This room is bright. It's yellow!",
+     "exits": { "east": 5, "north": 1 },
+     "items": ["banana","knife","ball"] 
+    }
+    ,
+    {"name": "A green room", 
+     "desc": "This room is simple too, but with green walls.",
+     "exits": { "east": 3, "north": 2, "west":4 },
+     "items":  ["wand","potion"]
+    } 
+   ]  
+   

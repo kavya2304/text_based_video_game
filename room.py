@@ -22,6 +22,9 @@ class Room:
             sup= random.choice(self.old_lady)
             return sup
         return False
+    
+    def remove_surprise(self,ite):
+        self.old_lady.remove(ite)        
         
     def add_item(self, item):
         self.items.append(item)

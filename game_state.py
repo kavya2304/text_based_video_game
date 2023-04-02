@@ -115,7 +115,8 @@ class GameState:
             room2 = self.get_current_room()
             ite= room2.get_surprise()
             if ite:
-                self.add_item(ite)   
+                self.add_item(ite)  
+                room2.remove_surprise(ite)
                 print('You got',ite,end='!!\n')
             else:
                 print('You cant use abracadabra here!!')
