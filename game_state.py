@@ -54,7 +54,7 @@ class GameState:
                 else:
                     self.player_location = exit_idx
                     roomg = self.get_current_room()
-                    print('You go',direction,'\n')
+                    print('You go',direction,end='.\n')
                     # print('----------->>',roomg.items_player_should_have)
                     #for winning and loosing conditions
                     if  roomg.items_player_should_have is not None:
@@ -69,7 +69,7 @@ class GameState:
                     print('>',roomg.name,'\n')
                     print(roomg.desc,'\n')
                     if roomg.items:
-                        print('Items:',' '.join(roomg.items),'\n')
+                        print('Items:',', '.join(roomg.items),'\n')
                     print('Exits:', ' '.join(roomg.exits.keys()),'\n')
                     # This is for abracadabra verb
                     if roomg.old_lady is not None:
