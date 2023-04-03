@@ -57,7 +57,6 @@ class GameState:
                     # print('----------->>',roomg.items_player_should_have)
                     #for winning and loosing conditions
                     if  roomg.items_player_should_have is not None:
-                        # print('-----x',self.inventory)
                         if any(item in roomg.items_player_should_have for item in self.inventory):
                             print('You can do the magic with help of Magicbook here,and escape from this adventure now,Hurrayyy,You Won the game!!')
                             sys.exit()
@@ -122,14 +121,17 @@ class GameState:
                 print('You cant use abracadabra here!!')
 
         elif verb == 'drop':
-            item_name = ' '.join(args)
-            if item_name in self.inventory:
-                self.remove_item(item_name)
-                room123 = self.get_current_room()
-                room123.add_item(item_name)
-                print('You drop the',item_name,end='.\n')
+            if len(args)>0:
+                item_name = ' '.join(args)
+                if item_name in self.inventory:
+                    self.remove_item(item_name)
+                    room123 = self.get_current_room()
+                    room123.add_item(item_name)
+                    print('You drop the',item_name,end='.\n')
+                else:
+                    print("You're not carrying that.")
             else:
-                print("You're not carrying that.")
+                print('Drop what?')
         else:
             print("I don't understand.")
 
